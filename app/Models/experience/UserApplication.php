@@ -12,16 +12,16 @@ class UserApplication extends Model
     
    ,'company'
                          
-    ,'dateStart'
+   ,'dateStart'
                          
-    ,'industryId'
+   ,'industryId'
                           
-    ,'higestLevel'
+   ,'higestLevel'
                          
-    ,'school'
+   ,'school'
                          
-    ,'dateComplated',
+   ,'dateComplated',
                           
-    'nameSkills',
-                            ];
+   'nameSkills',
+   ];
 }
