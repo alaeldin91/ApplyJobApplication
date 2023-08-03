@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobTitle extends Model
 {
-  protected $fillable = ['name','numberJob','description'];
+  protected $fillable = [
+    'name'
+    
+    ,'numberJob'
+    
+    ,'description'];
 }
