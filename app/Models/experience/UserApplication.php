@@ -7,13 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserApplication extends Model
 {
-    protected $fillable =['jobTitleId'
-                          ,'company'
-                          ,'dateStart'
-                          ,'industryId'
-                          ,'higestLevel'
-                          ,'school'
-                          ,'dateComplated',
-                          'nameSkills',
+    protected $fillable =[
+    'jobTitleId'
+    
+   ,'company'
+                         
+    ,'dateStart'
+                         
+    ,'industryId'
+                          
+    ,'higestLevel'
+                         
+    ,'school'
+                         
+    ,'dateComplated',
+                          
+    'nameSkills',
                             ];
 }
