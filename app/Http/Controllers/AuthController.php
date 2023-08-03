@@ -29,7 +29,9 @@ class AuthController extends Controller
 
             if ($validator->fails()) {
 
-                return response()->json(['status' => false, 'message' => 'validation error', 'error' => $validator->errors()]);
+                return response()->json(['status' => false, 'message'
+                                        => 'validation error', 'error'
+                                        => $validator->errors()]);
             }
 
             $user = User::create([
@@ -37,20 +39,17 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
-                
                 'mobileNumber'=>$request->mobileNumber
 
             ]);
 
-            
-           
-            
            return response()->json(['message' => 'user Registered Successfully', 'user' => $user]);
         } 
         
         catch (\Throwable $th) {
 
-            return response()->json(['status' => false, 'message' => $th->getMessage()], 500);
+            return response()->json(['status' => false, 'message' 
+                                    => $th->getMessage()], 500);
         }
     }
    
@@ -99,7 +98,9 @@ class AuthController extends Controller
         
         catch (\Throwable $th) {
     
-            return response()->json(['status' => false, 'message' => $th->getMessage()], 500);
+            return response()->json(['status' => false, 'message' 
+                                    => $th->getMessage()], 
+                                    500);
         }
     }
         
@@ -109,7 +110,7 @@ class AuthController extends Controller
             $query = User::query();
           
             /**
-            * Filtering base Price 
+            * Filtering base email 
             */
              
             $email = $request->input('email');
