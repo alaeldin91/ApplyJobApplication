@@ -87,7 +87,7 @@ class AuthController extends Controller
 
             $user = User::where('email', $request->email)
               ->first();
-
+            
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
@@ -127,7 +127,8 @@ class AuthController extends Controller
              
                 $query->where(function($query) use ($keyWord){
                 
-                    $query ->where('name', 'like',"%$keyWord%")->orWhere('description','like',"%$keyWord%");
+                    $query ->where('name', 'like',"%$keyWord%")
+                        ->orWhere('description','like',"%$keyWord%");
                 });
              }
     }
