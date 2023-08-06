@@ -27,6 +27,7 @@ Route::post('user/register',[AuthController::class,'registerUser']);
 
 Route::post('user/login',[AuthController::class,'login']);
 
+<<<<<<< HEAD
 //Route::get('user/search',[AuthController::class,'searchUser'])->middleware('auth:sanctum');
 
 
@@ -55,7 +56,33 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 Route::post('app/apply',[ApplyJobController::class,'applyJob'])->middleware('auth:sanctum');
+=======
+Route::get('user/search',[AuthController::class,'searchUser'])
+           ->middleware('auth:sanctum');
 
+/** Route Experience */
+
+Route::post('experience/storejob',[JobTitleController::class,'storeJob'])
+            ->middleware('auth:sanctum');
+
+Route::get('experience/getjob',[JobTitleController::class,'index'])
+            ->middleware('auth:sanctum');
+
+Route::post('experience/storeindustry',[IndustryController::class,'storeIndustry'])
+            ->middleware('auth:sanctum');
+
+Route::get('experience/getindustry',[IndustryController::class,'index'])
+           ->middleware('auth:sanctum');
+
+Route::get('experience/getalljob',[JobTitleController::class,'getAllJob'])
+            ->middleware('auth:sanctum');
+
+Route::post('experience/updateJob/{id}',[JobTitleController::class,'updateJob'])
+            ->middleware('auth:sanctum');
+>>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
+
+Route::post('app/apply',[ApplyJobController::class,'applyJob'])
+            ->middleware('auth:sanctum');
 
 /**Route Apply Job */
 

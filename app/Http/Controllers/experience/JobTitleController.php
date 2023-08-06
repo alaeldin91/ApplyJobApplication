@@ -17,11 +17,13 @@ class JobTitleController extends Controller
                
         /** Cheack Job Title Is Already Exist */
 
-        $existingJobTitle = JobTitle::where('name',$jobTitleRequest->input('name'))->first(); 
+        $existingJobTitle = JobTitle::where('name',$jobTitleRequest
+                                            ->input('name'))->first(); 
         
         if($existingJobTitle){
             
-            return response()->json(['message'=>'the Job Title is Already Exist']);
+            return response()->json(['message'
+                                    =>'the Job Title is Already Exist']);
          
         }
 
@@ -32,9 +34,11 @@ class JobTitleController extends Controller
             return response()->json($jobTitle,201);
            
         }
+        
         catch(\Exception $e){
          
-        return response()->json(['message'=>'Failed to create Job Title. Please try again later.',500]);
+        return response()->json(['message'=>'Failed to create Job Title.
+                                  Please try again later.',500]);
 
     }
     

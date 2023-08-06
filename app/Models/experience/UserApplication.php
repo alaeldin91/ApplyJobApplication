@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserApplication extends Model
 {
+<<<<<<< HEAD
     protected $fillable =['jobTitleId',
                           'name',
                           'numberPhone',
@@ -21,4 +22,23 @@ class UserApplication extends Model
                           'nameSkills',
                           'userId'
                             ];
+=======
+    protected $fillable =[
+    'jobTitleId'
+    
+   ,'company'
+                         
+   ,'dateStart'
+                         
+   ,'industryId'
+                          
+   ,'higestLevel'
+                         
+   ,'school'
+                         
+   ,'dateComplated',
+                          
+   'nameSkills',
+   ];
+>>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
 }

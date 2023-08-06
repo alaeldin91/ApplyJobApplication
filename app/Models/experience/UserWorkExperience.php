@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class UserWorkExperience extends Model
 {
 
-    protected $fillable = ['jobTitleId','company','dateStart','industryId','userId'];
+    protected $fillable = [
+    'jobTitleId'
+    
+    ,'company',
+    
+    'dateStart'
+    
+    ,'industryId'
+    
+    ,'userId'];
 
 }

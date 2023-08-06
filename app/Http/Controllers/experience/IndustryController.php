@@ -16,7 +16,8 @@ class IndustryController extends Controller
     
         /** Cheack Industry Is Already Exist */
 
-        $existingIndustry = Industry::where('name',$industryRequest->input('name'))->first(); 
+        $existingIndustry = Industry::where('name',$industryRequest->input('name'))
+            ->first(); 
         
         if($existingIndustry){
             
@@ -26,15 +27,16 @@ class IndustryController extends Controller
 
         try{
 
-            $jobTitle = Industry::create($industryRequest->all());
+            $industry = Industry::create($industryRequest->all());
             
-            return response()->json($jobTitle,201);
+            return response()->json($industry,201);
            
         }
 
         catch(\Exception $e){
          
-        return response()->json(['message'=>'Failed to create Industry. Please try again later.',500]);
+        return response()->json(['message'=>'Failed to create Industry. 
+        Please try again later.',500]);
 
     }
     
@@ -55,7 +57,8 @@ class IndustryController extends Controller
     }
     catch(\Exception $e){
 
-        return response()->json(['message'=>'Failed to Get Industry. Please try again later.'],500);
+        return response()->json(['message'
+        =>'Failed to Get Industry. Please try again later.'],500);
 
     }
   
