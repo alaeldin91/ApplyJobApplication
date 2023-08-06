@@ -5,7 +5,6 @@ namespace App\Http\Controllers\experience;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request\JobTitleRequest;
 use App\Models\experience\JobTitle;
-use Illuminate\Support\Facades\Auth;
 
 class JobTitleController extends Controller
 {
@@ -15,7 +14,6 @@ class JobTitleController extends Controller
     
     public function storeJob(JobTitleRequest $jobTitleRequest){
     
-        if(Auth::check() && Auth::user()->roleId === 1)
                
         /** Cheack Job Title Is Already Exist */
 
@@ -46,7 +44,8 @@ class JobTitleController extends Controller
      /**
  * function get All JobTitle
  */
-  
+
+ 
  public function index(){
     try{
 
@@ -72,7 +71,7 @@ public function updateJob(JobTitleRequest $jobTitleRequest,int $id){
     
     if(!$jobTitle){
         
-        return response()->json(['message'=>'the Product is not Found']);
+        return response()->json(['message'=>'the Job is not Found']);
 
     }
 
@@ -101,7 +100,8 @@ catch(\Throwable $th){
 
     }
     catch(\Exception $e){
-        return response()->json(['message'=>'Failed to Get product. Please try again later.'],500);
+        
+        return response()->json(['message'=>'Failed to Get Job. Please try again later.'],500);
 
     }
   

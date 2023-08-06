@@ -30,7 +30,7 @@ class ApplyJobController extends Controller
         }
         catch(\Exception $e){
        
-        return response()->json(['message'=>'Failed to create . Please try again later.',500]);
+        return response()->json(['message'=>'Failed to create . Please try again later.'.$e->getMessage(),500]);
 
         }
     }

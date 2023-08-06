@@ -21,11 +21,13 @@ class JobTitleRequest extends FormRequest
      */
     public function rules(): array
     {
+       
         return [
             
             'name'=> 'required|string|max:255',
             'numberJob'=>'required',
-            'description'=>'required',
+            'description'=>'required|string',
+            'userId'=>'required'
             
         ];
     }

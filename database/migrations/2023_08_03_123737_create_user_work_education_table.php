@@ -21,9 +21,10 @@ return new class extends Migration
             
             $table->string('dateCompleted');
 
-            $table->string('userId');
+            $table->string('userId')->refrence('id')->on('users');
   
             $table->timestamps();
+        
         });
     }
 

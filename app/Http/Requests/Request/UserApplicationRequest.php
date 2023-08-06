@@ -24,14 +24,22 @@ class UserApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-           
-            'jobTitle'=>'required',
+            
+            'name'=>'required|string|min:2',
+              
+            'numberPhone'=>'required|string',
+             
+            'cvText'=>'required',
+             
+            'cv'=>'required',
+            
+            'jobTitleId'=>'required',
            
             'company'=>'required|string',
              
             'dateStart'=>'required|string',
            
-            'industryId'=>'required',
+            'industry'=>'required',
            
             'higestLevel'=>'required|string',
            
@@ -39,7 +47,8 @@ class UserApplicationRequest extends FormRequest
            
             'dateComplated'=>'required',
            
-            'nameSkills'=>'required'
+            'nameSkills'=>'required',
+            'userId'=>'required'
         ];
     }
 }

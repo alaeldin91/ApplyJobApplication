@@ -15,13 +15,21 @@ return new class extends Migration
            
             $table->id();
             
+            $table->string('name');
+            
+            $table->string('numberPhone');
+            
+            $table->string('cvText');
+            
+            $table->string('cv'); 
+            
             $table->integer('jobTitleId')->refrence('id')->on('job_titles');
-
+           
             $table->string('company');
             
             $table->string('dateStart');
 
-            $table->integer('industryId')->refrence('id')->on('industries');
+            $table->integer('industry');
             
             $table->string('higestLevel');
               
@@ -31,9 +39,9 @@ return new class extends Migration
 
             $table->string('nameSkills');
 
+            $table->integer('userId')->refrence('id')->on('users');        
             
-        
-            
+            $table->timestamps();
         });
     }
 

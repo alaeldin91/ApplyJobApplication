@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('user_work_skills', function (Blueprint $table) {
             $table->id();
             
+            $table->integer('userId')->refrence('id')->on('users');
+         
             $table->string('name');
 
             $table->timestamps();

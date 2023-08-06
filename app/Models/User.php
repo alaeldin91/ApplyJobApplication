@@ -52,4 +52,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Roles');
     }
     
+    public function role()
+{
+
+    return $this->belongsTo(Role::class, 'roleId');
+
+}
 }

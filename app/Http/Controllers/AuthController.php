@@ -33,40 +33,37 @@ class AuthController extends Controller
             }
 
             $user = User::create([
-                'roleId' => $request->roleId,
+                'roleId' => 1,
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
-                
-                'mobileNumber'=>$request->mobileNumber
+                'mobileNumber' => $request->mobileNumber
 
             ]);
 
-            
-           
-            
-           return response()->json(['message' => 'user Registered Successfully', 'user' => $user]);
-        } 
-        
-        catch (\Throwable $th) {
+
+
+
+            return response()->json(['message' => 'user Registered Successfully', 'user' => $user]);
+        } catch (\Throwable $th) {
 
             return response()->json(['status' => false, 'message' => $th->getMessage()], 500);
         }
     }
-   
-   /**
- * login function Generate Token jwt
- *
- * @param Request $request
- * @return void
- * 
- */
-   
+
+    /**
+     * login function Generate Token jwt
+     *
+     * @param Request $request
+     * @return void
+     * 
+     */
+
     public function login(Request $request)
     {
 
         try {
-       
+
             $validateUser = Validator::make($request->all(), [
                 'email' => 'required|email',
                 'password' => 'required|string'
@@ -77,7 +74,6 @@ class AuthController extends Controller
 
                 return response()->json(['status' => false, 'message' =>
                 'validation error', 'error' => $validateUser->errors()], 401);
-   
             }
 
             if (!Auth::attempt($request->only(['email', 'password']))) {
@@ -87,49 +83,75 @@ class AuthController extends Controller
             }
 
             $user = User::where('email', $request->email)
-              ->first();
+                ->first();
 
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")
-                ->plainTextToken, 'user' => $user
+                    ->plainTextToken, 'user' => $user
             ], 200);
-        }
-        
-        catch (\Throwable $th) {
-    
+        } catch (\Throwable $th) {
+
             return response()->json(['status' => false, 'message' => $th->getMessage()], 500);
         }
     }
-        
-    
-    public function searchUser(Request $request){
-    
-            $query = User::query();
-          
-            /**
-            * Filtering base Price 
-            */
-             
-            $email = $request->input('email');
-        
-            if($email !== null){
-        
-                $query->where('email', '>=', $email);
-            }
-        
-                    // Searching based on keyword
-             $keyWord = $request->input('keyword');
-        
-             if ($keyWord !==null){
-             
-                $query->where(function($query) use ($keyWord){
-                
-                    $query ->where('name', 'like',"%$keyWord%")->orWhere('description','like',"%$keyWord%");
-                });
-             }
+
+    public function getUserNameById(int $id)
+    {
+        try {
+            $user = User::find($id);
+            return response()->json(['user' => $user], 200);
+        } catch (\Throwable $th) {
+
+            return response()->json(['message' => $th->getMessage()], 500);
+        }
     }
 
+    public function searchUser(Request $request)
+    {
 
+        $query = User::query();
+
+        /**
+         * Filtering base Price 
+         */
+
+        $email = $request->input('email');
+
+        if ($email !== null) {
+
+            $query->where('email', '>=', $email);
+        }
+
+        // Searching based on keyword
+        $keyWord = $request->input('keyword');
+
+        if ($keyWord !== null) {
+
+            $query->where(function ($query) use ($keyWord) {
+
+                $query->where('name', 'like', "%$keyWord%")->orWhere('description', 'like', "%$keyWord%");
+            });
+        }
+    }
+
+    /**
+     * function get All Users
+     */
+
+    public function index()
+    {
+        try {
+
+            $users = User::paginate(10);
+
+            return response()->json($users);
+        }
+        
+        catch (\Exception $e) {
+
+            return response()->json(['message' => 'Failed to Get All Users. Please try again later.'], 500);
+        }
+    }
 }

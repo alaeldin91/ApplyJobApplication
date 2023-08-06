@@ -19,6 +19,8 @@ return new class extends Migration
             $table->bigInteger('numberJob');
            
             $table->string('description');
+
+            $table->string('userId')->refrence('id')->on('users');
            
             $table->timestamps();
         });
